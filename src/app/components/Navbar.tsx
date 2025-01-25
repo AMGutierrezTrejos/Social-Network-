@@ -8,7 +8,12 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 import { GrHomeRounded } from "react-icons/gr";
 import { IoPeopleOutline } from "react-icons/io5";
 import { TbMessageChatbot } from "react-icons/tb";
-import { MdOutlineNotificationsActive, MdOutlineAutoStories  } from "react-icons/md";
+import { CiSearch } from "react-icons/ci";
+
+import {
+  MdOutlineNotificationsActive,
+  MdOutlineAutoStories,
+} from "react-icons/md";
 import { CiLogin } from "react-icons/ci";
 
 const Navbar = () => {
@@ -21,23 +26,31 @@ const Navbar = () => {
         </Link>
       </div>
       {/* CENTER SIDE */}
-      <div className="hidden md:flex w-[50%] text-sm">
+      <div className="hidden md:flex w-[50%] text-sm items-center justify-between ">
         {/* LINKS */}
         <div className="flex gap-6 text-grenn-600">
           <Link href="/" className="flex items-center gap-2">
-            <GrHomeRounded width={16} height={16} className="w-4 h-4" />
+            <GrHomeRounded size={18} />
             <span>HomePage</span>
           </Link>
           <Link href="/" className="flex items-center gap-2">
-            <IoPeopleOutline width={16} height={16} className="w-4 h-4" />
+            <IoPeopleOutline size={18} />
             <span>Friends</span>
           </Link>
           <Link href="/" className="flex items-center gap-2">
-            <MdOutlineAutoStories  width={16} height={16} className="w-4 h-4" />
+            <MdOutlineAutoStories size={18} />
             <span>Stories</span>
           </Link>
         </div>
-        
+        {/* SEARCH */}
+        <div className="hidden xl:flex p-2 bg-slate-100 items-center rounded-xl">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="bg-transparent outline-none"
+          />
+          <CiSearch size={24} />
+        </div>
       </div>
       {/* RIGHT SIDE */}
       <div className="w-[30%] flex items-center justify-end gap-4 xl:gap-8">
@@ -50,19 +63,19 @@ const Navbar = () => {
         <ClerkLoaded>
           <SignedIn>
             <div className="cursor-pointer">
-              <IoPeopleOutline width={16} height={16} />
+              <IoPeopleOutline size={24} />
             </div>
             <div className="cursor-pointer">
-              <TbMessageChatbot width={16} height={16} />
+              <TbMessageChatbot size={24} />
             </div>
             <div className="cursor-pointer">
-              <MdOutlineNotificationsActive width={16} height={16} />
+              <MdOutlineNotificationsActive size={24} />
             </div>
             <UserButton />
           </SignedIn>
           <SignedOut>
             <div className="flex items-center gap-2 text-sm">
-              <CiLogin width={20} height={20} />
+              <CiLogin size={24} />
               <Link href="/sign-in">Login / Register</Link>
             </div>
           </SignedOut>
