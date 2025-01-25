@@ -2,10 +2,14 @@
 import Link from "next/link";
 import React from "react";
 import MobileMenu from "./MobileMenu";
-import Image from "next/image";
-import { GrHomeRounded } from "react-icons/gr";
+
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import { GrHomeRounded } from "react-icons/gr";
+import { IoPeopleOutline } from "react-icons/io5";
+import { TbMessageChatbot } from "react-icons/tb";
+import { MdOutlineNotificationsActive, MdOutlineAutoStories  } from "react-icons/md";
+import { CiLogin } from "react-icons/ci";
 
 const Navbar = () => {
   return (
@@ -25,14 +29,15 @@ const Navbar = () => {
             <span>HomePage</span>
           </Link>
           <Link href="/" className="flex items-center gap-2">
-            <GrHomeRounded width={16} height={16} className="w-4 h-4" />
+            <IoPeopleOutline width={16} height={16} className="w-4 h-4" />
             <span>Friends</span>
           </Link>
           <Link href="/" className="flex items-center gap-2">
-            <GrHomeRounded width={16} height={16} className="w-4 h-4" />
+            <MdOutlineAutoStories  width={16} height={16} className="w-4 h-4" />
             <span>Stories</span>
           </Link>
         </div>
+        
       </div>
       {/* RIGHT SIDE */}
       <div className="w-[30%] flex items-center justify-end gap-4 xl:gap-8">
@@ -43,8 +48,24 @@ const Navbar = () => {
           />
         </ClerkLoading>
         <ClerkLoaded>
-          <SignedIn>Signed in</SignedIn>
-          <SignedOut>SignedOut</SignedOut>
+          <SignedIn>
+            <div className="cursor-pointer">
+              <IoPeopleOutline width={16} height={16} />
+            </div>
+            <div className="cursor-pointer">
+              <TbMessageChatbot width={16} height={16} />
+            </div>
+            <div className="cursor-pointer">
+              <MdOutlineNotificationsActive width={16} height={16} />
+            </div>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <div className="flex items-center gap-2 text-sm">
+              <CiLogin width={20} height={20} />
+              <Link href="/sign-in">Login / Register</Link>
+            </div>
+          </SignedOut>
         </ClerkLoaded>
         <MobileMenu />
       </div>
