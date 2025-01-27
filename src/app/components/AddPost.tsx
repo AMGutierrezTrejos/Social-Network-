@@ -13,20 +13,44 @@ const AddPost = () => {
         className="w-12 h-12 object-cover rounded-full"
       />
       {/* POST */}
-      <div className="">
+      <div className="flex-1">
         {/* INPUT */}
-        <div className="">
-          <textarea name="" id="" />
+        <div className="flex gap-4">
+          <textarea
+            placeholder="What's on your mind?"
+            className="flex-1 bg-slate-100 p-2 rounded-lg"
+          />
           <Image
             src="/emoji.png"
             alt=""
-            width={20}
-            height={20}
-            className="w-5 h-5 cursor pointer self-end"
+            width={30}
+            height={30}
+            className="w-7 h-7 cursor pointer self-end"
           />
         </div>
         {/* POST OPTIONS */}
-        <div className=""></div>
+        <div className="flex items-center gap-4 mt-4 text-gray-400 flex-wrap">
+          <div className="flex items-center gap-2 cursor-pointer">
+            {/* OPTION 1 */}
+            <Image src="/addimage.png" alt="" width={20} height={20} />
+            Photo
+          </div>
+          {/* OPTION 2 */}
+          <div className="flex items-center gap-2 cursor-pointer">
+            <Image src="/addVideo.png" alt="" width={20} height={20} />
+            Video
+          </div>
+          {/* OPTION 3 */}
+          <div className="flex items-center gap-2 cursor-pointer">
+            <Image src="/events.png" alt="" width={20} height={20} />
+            Event
+          </div>
+          {/* OPTION 4 */}
+          <div className="flex items-center gap-2 cursor-pointer">
+            <Image src="/poll.png" alt="" width={20} height={20} />
+            Survey
+          </div>
+        </div>
       </div>
     </div>
   );
