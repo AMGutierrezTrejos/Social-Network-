@@ -3,7 +3,7 @@ import React from "react";
 
 const AddPost = () => {
   return (
-    <div className="p-4 bg-white rounded-lg flex gap-4 justify-between text-sm">
+    <div className="p-4 bg-white shadow-md rounded-lg flex gap-4 justify-between text-sm">
       {/* PROFILE PIC */}
       <Image
         src="https://images3.alphacoders.com/135/1356879.png"
@@ -17,7 +17,7 @@ const AddPost = () => {
         {/* INPUT */}
         <div className="flex gap-4">
           <textarea
-            placeholder="What's on your mind?"
+            placeholder="What strategy are you planning today?"
             className="flex-1 bg-slate-100 p-2 rounded-lg"
           />
           <Image
