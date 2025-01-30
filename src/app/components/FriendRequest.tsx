@@ -13,7 +13,7 @@ function FriendRequest() {
         </Link>
       </div>
       {/* BOT */}
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Image
             src="https://images7.alphacoders.com/592/thumbbig-592678.webp"
@@ -25,8 +25,20 @@ function FriendRequest() {
           <span className="font-semibold">John Doe</span>
         </div>
         <div className="flex gap-3 justify-end">
-          <Image src="/accept.png" alt="" width={20} height={20} />
-          <Image src="/reject.png" alt="" width={20} height={20} />
+          <Image
+            src="/accept.png"
+            alt=""
+            width={20}
+            height={20}
+            className="cursor-pointer"
+          />
+          <Image
+            src="/reject.png"
+            alt=""
+            width={20}
+            height={20}
+            className="cursor-pointer"
+          />
         </div>
       </div>
     </div>
