@@ -30,9 +30,20 @@ const ProfilePage = () => {
             </div>
             <h1 className="mt-20 mb-4 text-2xl font-medium">Ash Ketchum</h1>
             <div className="flex items-center justify-center gap-12 mb-4">
+              {/* POST # */}
               <div className="flex flex-col items-center">
-                <span className=""></span>
-                <span className=""></span>
+                <span className="font-medium">123</span>
+                <span className="text-xs">Posts</span>
+              </div>
+              {/* FOLLOWERS */}
+              <div className="flex flex-col items-center">
+                <span className="font-medium">123</span>
+                <span className="text-xs">Followers</span>
+              </div>
+              {/* FOLLOWING */}
+              <div className="flex flex-col items-center">
+                <span className="font-medium">123</span>
+                <span className="text-xs">Following</span>
               </div>
             </div>
           </div>
