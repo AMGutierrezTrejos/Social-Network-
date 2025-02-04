@@ -15,14 +15,21 @@ import {
   MdOutlineAutoStories,
 } from "react-icons/md";
 import { CiLogin } from "react-icons/ci";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
     <div className="h-24 flex items-center justify-between">
       {/* LEFT SIDE */}
-      <div className="md:hidden lg:block w-[20%]">
+      <div className="md:hidden lg:block w-[20%] ">
         <Link href="/" className="font-bold text-xl text-green-600">
-          Social Network MGT
+          <Image
+            src="/logo.png"
+            alt=""
+            width={100}
+            height={40}
+            className="ml-9"
+          />
         </Link>
       </div>
       {/* CENTER SIDE */}

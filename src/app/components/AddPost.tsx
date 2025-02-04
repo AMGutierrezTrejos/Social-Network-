@@ -1,11 +1,10 @@
-import { auth } from "@clerk/nextjs/server";
 import prisma from "@/lib/client";
+import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import React from "react";
 
 const AddPost = async () => {
   const { userId } = await auth();
-
   
   return (
     <div className="p-4 bg-white shadow-md rounded-lg flex gap-4 justify-between text-sm">
