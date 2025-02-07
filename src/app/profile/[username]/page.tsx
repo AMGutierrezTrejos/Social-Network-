@@ -1,11 +1,11 @@
-import Feed from "@/app/components/Feed";
-import LeftMenu from "@/app/components/LeftMenu";
-import RightMenu from "@/app/components/RightMenu";
+import LeftMenu from "@/app/components/leftMenu/LeftMenu";
+import RightMenu from "@/app/components/rightMenu/RightMenu";
 import React from "react";
 import Image from "next/image";
 import prisma from "@/lib/client";
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
+import Feed from "@/app/components/feed/Feed";
 
 const ProfilePage = async ({ params }: { params: { username: string } }) => {
   const username = params.username;
@@ -95,7 +95,7 @@ const ProfilePage = async ({ params }: { params: { username: string } }) => {
         </div>
       </div>
       <div className="hidden lg:block w-[30%]">
-        <RightMenu user="test" />
+        <RightMenu user={user}/>
       </div>
     </div>
   );
