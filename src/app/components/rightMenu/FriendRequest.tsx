@@ -1,8 +1,22 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { auth } from "@clerk/nextjs/server";
+import prisma from "@/lib/client";
 
-function FriendRequest() {
+const FriendRequest = async () => {
+  const { userId } = await auth();
+
+  if (!userId) return null;
+
+  const request = await prisma.followRequest.findMany({
+    where: {
+      receiverId: userId,
+    },
+    include: {
+      sender: true,
+    },
+  });
   return (
     <div className="p-4 bg-white shadow-md rounded-lg text-sm flex flex-col gap-4">
       {/* TOP */}
@@ -43,6 +57,6 @@ function FriendRequest() {
       </div>
     </div>
   );
-}
+};
 
 export default FriendRequest;
