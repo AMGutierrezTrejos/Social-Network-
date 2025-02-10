@@ -1,5 +1,5 @@
 "use client";
-import { switchFollow } from "@/lib/actions";
+import { switchBlock, switchFollow } from "@/lib/actions";
 import React, { useOptimistic, useState } from "react";
 
 const UserInfoCardInteraction = ({
@@ -22,7 +22,7 @@ const UserInfoCardInteraction = ({
   });
 
   const follow = async () => {
-    switchOptimisticState("");
+    switchOptimisticState("follow");
     try {
       await switchFollow(userId);
       setUserState((prevState) => ({
@@ -39,17 +39,29 @@ const UserInfoCardInteraction = ({
   };
 
   const block = async () => {
-
+    switchOptimisticState("block");
+    try {
+      await switchBlock(userId);
+      setUserState((prevState) => ({
+        ...prevState,
+        blocked: !prevState.blocked,
+      }));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const [optimisticState, switchOptimisticState] = useOptimistic(
     userState,
-    (state) => ({
-      ...state,
-      following: state.following && false,
-      followingRequestSent:
-        !state.following && !state.followingRequestSent ? true : false,
-    })
+    (state, value: "follow" | "block") =>
+      value === "follow"
+        ? {
+            ...state,
+            following: state.following && false,
+            followingRequestSent:
+              !state.following && !state.followingRequestSent ? true : false,
+          }
+        : { ...state, blocked: !state.blocked }
   );
   return (
     <>
@@ -62,10 +74,12 @@ const UserInfoCardInteraction = ({
             : "Follow"}
         </button>
       </form>
-      <form action="" className="self-end">
+      <form action={block} className="self-end">
+        <button>
         <span className="text-red-400  text-xs cursor-pointer">
           {optimisticState.blocked ? "Unblock User" : "Block User"}
         </span>
+        </button>
       </form>
     </>
   );
