@@ -1,11 +1,11 @@
+
+import Feed from "@/app/components/feed/Feed";
 import LeftMenu from "@/app/components/leftMenu/LeftMenu";
 import RightMenu from "@/app/components/rightMenu/RightMenu";
-import React from "react";
-import Image from "next/image";
 import prisma from "@/lib/client";
-import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
-import Feed from "@/app/components/feed/Feed";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 
 const ProfilePage = async ({ params }: { params: { username: string } }) => {
   const username = params.username;
@@ -38,6 +38,7 @@ const ProfilePage = async ({ params }: { params: { username: string } }) => {
         blockedId: currentUserId,
       },
     });
+
     if (res) isBlocked = true;
   } else {
     isBlocked = false;
@@ -74,20 +75,17 @@ const ProfilePage = async ({ params }: { params: { username: string } }) => {
                 : user.username}
             </h1>
             <div className="flex items-center justify-center gap-12 mb-4">
-              {/* POST # */}
               <div className="flex flex-col items-center">
                 <span className="font-medium">{user._count.posts}</span>
-                <span className="text-xs">Posts</span>
+                <span className="text-sm">Posts</span>
               </div>
-              {/* FOLLOWERS */}
               <div className="flex flex-col items-center">
                 <span className="font-medium">{user._count.followers}</span>
-                <span className="text-xs">Followers</span>
+                <span className="text-sm">Followers</span>
               </div>
-              {/* FOLLOWING */}
               <div className="flex flex-col items-center">
                 <span className="font-medium">{user._count.followings}</span>
-                <span className="text-xs">Following</span>
+                <span className="text-sm">Following</span>
               </div>
             </div>
           </div>
@@ -95,7 +93,7 @@ const ProfilePage = async ({ params }: { params: { username: string } }) => {
         </div>
       </div>
       <div className="hidden lg:block w-[30%]">
-        <RightMenu user={user}/>
+        <RightMenu user={user} />
       </div>
     </div>
   );

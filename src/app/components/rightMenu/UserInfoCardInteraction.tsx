@@ -1,6 +1,7 @@
 "use client";
+
 import { switchBlock, switchFollow } from "@/lib/actions";
-import React, { useOptimistic, useState } from "react";
+import { useOptimistic, useState } from "react";
 
 const UserInfoCardInteraction = ({
   userId,
@@ -23,30 +24,24 @@ const UserInfoCardInteraction = ({
     switchOptimisticState("follow");
     try {
       await switchFollow(userId);
-      setUserState((prevState) => ({
-        ...prevState,
-        following: prevState.following && false,
+      setUserState((prev) => ({
+        ...prev,
+        following: prev.following && false,
         followingRequestSent:
-          !prevState.following && !prevState.followingRequestSent
-            ? true
-            : false,
+          !prev.following && !prev.followingRequestSent ? true : false,
       }));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (err) {}
   };
 
   const block = async () => {
     switchOptimisticState("block");
     try {
       await switchBlock(userId);
-      setUserState((prevState) => ({
-        ...prevState,
-        blocked: !prevState.blocked,
+      setUserState((prev) => ({
+        ...prev,
+        blocked: !prev.blocked,
       }));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (err) {}
   };
 
   const [optimisticState, switchOptimisticState] = useOptimistic(
@@ -64,7 +59,7 @@ const UserInfoCardInteraction = ({
   return (
     <>
       <form action={follow}>
-        <button className="w-full bg-green-400 text-white text-sm rounded-md p-2">
+        <button className="w-full bg-blue-500 text-white text-sm rounded-md p-2">
           {optimisticState.following
             ? "Following"
             : optimisticState.followingRequestSent
@@ -72,11 +67,11 @@ const UserInfoCardInteraction = ({
             : "Follow"}
         </button>
       </form>
-      <form action={block} className="self-end">
+      <form action={block} className="self-end ">
         <button>
-        <span className="text-red-400  text-xs cursor-pointer">
-          {optimisticState.blocked ? "Unblock User" : "Block User"}
-        </span>
+          <span className="text-red-400 text-xs cursor-pointer">
+            {optimisticState.blocked ? "Unblock User" : "Block User"}
+          </span>
         </button>
       </form>
     </>

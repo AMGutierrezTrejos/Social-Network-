@@ -1,9 +1,11 @@
 import React from "react";
-import LeftMenu from "./components/LeftMenu";
+
 import Stories from "./components/Stories";
 import AddPost from "./components/AddPost";
-import Feed from "./components/Feed";
+
 import RightMenu from "./components/rightMenu/RightMenu";
+import LeftMenu from "./components/leftMenu/LeftMenu";
+import Feed from "./components/feed/Feed";
 
 const Homepage = () => {
   return (
